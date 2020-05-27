@@ -2,7 +2,7 @@
   "name": "TeachingApps-online",
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://github.com/Deanang/TeacherApps/",
+  "homepage": "",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
