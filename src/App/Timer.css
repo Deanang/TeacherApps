@@ -7,7 +7,7 @@
 .main-section {
   background: transparent;
   max-width: 1000px;
-  min-width: 400px;
+  min-width: 260px;
   width: 90%;
   height: 300px;
   margin: 30px auto;
@@ -29,10 +29,10 @@
   color: #000000;
   display: inline-block;
   font-family: monospace;
-  font-size: 32px;
-  padding: 20px;
+  font-size: 22px;
+  padding: 10px;
   border-radius: 5px;
-  width: 80px;
+  width: 54px;
 }
 
 .stopwatch .stopwatch-btn {
