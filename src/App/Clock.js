@@ -1,40 +1,25 @@
-import React, { Component } from "react"
+import React, { useState, useEffect } from "react"
 import { Typography } from "@material-ui/core"
 
-class App extends Component {
-  state = {
-    time: new Date()
-  }
+export default function App() {
+  const [theTime, setTheTime] = useState(new Date().toLocaleTimeString())
 
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1000)
-  }
+  useEffect(() => {
+    setInterval(() => setTheTime(new Date().toLocaleTimeString()), 1000)
+  }, [])
 
-  componentWillUnmount() {
-    clearInterval(this.timerID)
+  const myCenter = {
+    textAlign: "center"
   }
+  return (
+    <>
+      <div>
+        <h1 style={myCenter}>The Clock App</h1>
+      </div>
 
-  tick() {
-    this.setState({
-      time: new Date()
-    })
-  }
-
-  render() {
-    const myCenter = {
-      textAlign: "center"
-    }
-    return (
-      <>
-        <div>
-          <h1 style={myCenter}>The Clock App</h1>
-        </div>
-        <Typography align="center" variant="h2" component="h2" gutterBottom>
-          {this.state.time.toLocaleTimeString()}
-        </Typography>
-      </>
-    )
-  }
+      <Typography align="center" variant="h5" gutterBottom>
+        Current Time: {theTime}
+      </Typography>
+    </>
+  )
 }
-
-export default App
