@@ -1,81 +1,65 @@
-import React from 'react';
-import { Grid, Paper } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from "react"
+import DisplayComponent from "../Components/DisplayComponent"
+import BtnComponent from "../Components/BtnComponent"
+import "./Timer.css"
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paperroot: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(1),
-      width: theme.spacing(16),
-      height: theme.spacing(16),
-    },
-    paper: {
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  },
-}));
+export default function Timer() {
+  const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 })
+  const [interv, setInterv] = useState()
+  const [status, setStatus] = useState(0)
+  // Not started = 0
+  // started = 1
+  // stopped = 2
 
-function FormRow() {
-  const classes = useStyles();
+  const start = () => {
+    run()
+    setStatus(1)
+    setInterv(setInterval(run, 10))
+  }
+
+  var updatedMs = time.ms,
+    updatedS = time.s,
+    updatedM = time.m,
+    updatedH = time.h
+
+  const run = () => {
+    if (updatedM === 60) {
+      updatedH++
+      updatedM = 0
+    }
+    if (updatedS === 60) {
+      updatedM++
+      updatedS = 0
+    }
+    if (updatedMs === 100) {
+      updatedS++
+      updatedMs = 0
+    }
+    updatedMs++
+    return setTime({ ms: updatedMs, s: updatedS, m: updatedM, h: updatedH })
+  }
+
+  const stop = () => {
+    clearInterval(interv)
+    setStatus(2)
+  }
+
+  const reset = () => {
+    clearInterval(interv)
+    setStatus(0)
+    setTime({ ms: 0, s: 0, m: 0, h: 0 })
+  }
+
+  const resume = () => start()
+
   return (
-    <React.Fragment>
-      <Grid item xs={4}>
-        <Paper className={classes.paper}>item</Paper>
-      </Grid>
-      <Grid item xs={4}>
-        <Paper className={classes.paper}>item</Paper>
-      </Grid>
-      <Grid item xs={4}>
-        <Paper className={classes.paper}>item</Paper>
-      </Grid>
-    </React.Fragment>
-  );
-}
-
-function SimplePaper() {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.paperroot}>
-      <Paper elevation={0} />
-      <Paper />
-      <Paper elevation={3} />
-      <Grid container spacing={1}>
-        <Grid container item xs={12} spacing={3}>
-          <FormRow />
-        </Grid>
-        <Grid container item xs={12} spacing={3}>
-          <FormRow />
-        </Grid>
-        <Grid container item xs={12} spacing={3}>
-          <FormRow />
-        </Grid>
-      </Grid>
+    <div className="main-section">
+      <div className="clock-holder">
+        <div className="stopwatch">
+          <DisplayComponent time={time} />
+          <BtnComponent status={status} resume={resume} reset={reset} stop={stop} start={start} />
+        </div>
+      </div>
     </div>
-  );
+  )
 }
-
-class Digit extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: 0 };
-  }
-  render() {
-    return <h1>Timer Value = {this.state.value}</h1>;
-  }
-}
-
-class Test extends React.Component {
-  render() {
-    return <h1>Test</h1>;
-  }
-}
-
-export { SimplePaper, Digit, Test };
