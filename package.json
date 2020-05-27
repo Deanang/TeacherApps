@@ -1,24 +1,26 @@
 {
-  "name": "npm install gh-pages --save-dev",
+  "name": "TeachingApps-online",
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://github.com/Deanang/TeacherApps/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@material-ui/core": "^4.10.0",
     "@material-ui/icons": "^4.9.1",
     "clsx": "latest",
+    "gh-pages": "^2.2.0",
     "material-ui": "^0.20.2",
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",
     "typescript": "^3.9.3"
   },
-  "devDependencies": {
-    "gh-pages": "^2.2.0"
-  }
+  "devDependencies": {}
 }
