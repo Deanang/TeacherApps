@@ -21,10 +21,18 @@ class App extends Component {
   }
 
   render() {
+    const myCenter = {
+      textAlign: "center"
+    }
     return (
-      <Typography align="center" variant="h2" component="h2" gutterBottom>
-        {this.state.time.toLocaleTimeString()}
-      </Typography>
+      <>
+        <div>
+          <h1 style={myCenter}>The Clock App</h1>
+        </div>
+        <Typography align="center" variant="h2" component="h2" gutterBottom>
+          {this.state.time.toLocaleTimeString()}
+        </Typography>
+      </>
     )
   }
 }

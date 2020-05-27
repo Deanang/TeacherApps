@@ -56,6 +56,7 @@ export default function Timer() {
     <div className="main-section">
       <div className="clock-holder">
         <div className="stopwatch">
+          <h1>The Stopwatch App</h1>
           <DisplayComponent time={time} />
           <BtnComponent status={status} resume={resume} reset={reset} stop={stop} start={start} />
         </div>
