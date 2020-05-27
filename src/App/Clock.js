@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
-import { Typography } from '@material-ui/core';
+import React, { Component } from "react"
+import { Typography } from "@material-ui/core"
 
 class App extends Component {
   state = {
-    time: new Date(),
-  };
+    time: new Date()
+  }
 
   componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1000);
+    this.timerID = setInterval(() => this.tick(), 1000)
   }
 
   componentWillUnmount() {
-    clearInterval(this.timerID);
+    clearInterval(this.timerID)
   }
 
   tick() {
     this.setState({
-      time: new Date(),
-    });
+      time: new Date()
+    })
   }
 
   render() {
     return (
-      <Typography align="center" variant="h1" component="h1" gutterBottom>
+      <Typography align="center" variant="h2" component="h2" gutterBottom>
         {this.state.time.toLocaleTimeString()}
       </Typography>
-    );
+    )
   }
 }
 
-export default App;
+export default App
