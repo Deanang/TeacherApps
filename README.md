@@ -2,12 +2,7 @@
 
 ## How to use
 
-Blah blah
-
-or:
-
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui-org/material-ui/tree/master/examples/create-react-app)
-
-## The idea behind the example
-
-This example demonstrates how you can use [Create React App](https://github.com/facebookincubator/create-react-app).
+Edit React Project in the main folder
+Type "npm start" to run development server and access app at localhost:3000
+Type "npm build" to deploy app to the build folder
+Download the content of the build folder to serve with a static server
