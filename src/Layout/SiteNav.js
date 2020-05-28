@@ -5,6 +5,7 @@ import React from "react"
 import Clock from "../App/Clock"
 import Copyright from "./Copyright"
 import Timer from "../App/Timer"
+import CountdownTimer from "../App/CountdownTimer"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,6 +24,7 @@ function AppArea() {
     <Box my={3} style={{ padding: "20px" }}>
       <Clock />
       <Timer />
+      <CountdownTimer />
     </Box>
   )
 }
