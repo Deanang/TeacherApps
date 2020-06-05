@@ -1,4 +1,4 @@
-import { AppBar, Box, Container, IconButton, Toolbar, Tab, Tabs } from "@material-ui/core"
+import { AppBar, Box, Container, IconButton, Toolbar } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import MenuIcon from "@material-ui/icons/Menu"
 import React from "react"
@@ -6,16 +6,16 @@ import Clock from "../App/Clock"
 import Copyright from "./Copyright"
 import Timer from "../App/Timer"
 import CountdownTimer from "../App/CountdownTimer"
+import Typography from "@material-ui/core/Typography"
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 0
-  },
+  root: {},
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(0)
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    width: 100
   }
 }))
 
@@ -32,17 +32,27 @@ function AppArea() {
 export default function SiteNav() {
   const classes = useStyles()
   return (
-    <Container>
+    <Container display="flex">
       <AppBar position="sticky" color="blue">
-        <Toolbar>
+        <Toolbar className={classes.root} justify="flex-start">
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Tabs variant="scrollable" scrollButtons="on" aria-label="scrollable auto tabs example">
-            <Tab label="Timer" />
-            <Tab label="Randomiser" disabled />
-            <Tab label="Others" disabled />
-          </Tabs>
+          <div className={classes.title}>
+            <Typography variant="h6" color="textSecondary" align="center">
+              Timer
+            </Typography>
+          </div>
+          <div className={classes.title}>
+            <Typography variant="h6" color="textSecondary" align="center">
+              Randomiser
+            </Typography>
+          </div>
+          <div className={classes.title}>
+            <Typography variant="h6" color="textSecondary" align="center">
+              Others
+            </Typography>
+          </div>
         </Toolbar>
       </AppBar>
       <AppArea />
